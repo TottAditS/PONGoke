@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     public  int PlayerScoreL = 0;
     public  int PlayerScoreR = 0;
+    public GameObject P1WiN;
+    public GameObject P2WiN;
+    public GameObject Backbutton;
+    public SideWall[] sideWalls;
 
     //Buat UI Text
     public TMP_Text txtPlayerScoreL;
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Mengisikan nilai integer PlayerScore ke UI
+        //sideWalls = FindObjectsOfType<SideWall>();
         txtPlayerScoreL.text = PlayerScoreL.ToString();
         txtPlayerScoreR.text = PlayerScoreR.ToString();
     }
@@ -54,12 +59,30 @@ public class GameManager : MonoBehaviour
         if (PlayerScoreL == 20)
         {
             Debug.Log("playerL win");
-            this.gameObject.SendMessage("ChangeScene","MainMenu");
+            P1WiN.SetActive(true);
+            Backbutton.SetActive(true);
+            sideWalls[0].enabled = false;
+            sideWalls[1].enabled = false;
+            // foreach(SideWall a in sideWalls){
+
+            //     a = GetComponent<SideWall>();
+            //     a.enabled = false;
+            // }
+            //this.gameObject.SendMessage("ChangeScene","MainMenu");
         }
         else if (PlayerScoreR == 20)
         {
             Debug.Log("playerR win");
-            this.gameObject.SendMessage("ChangeScene", "MainMenu");
+            P2WiN.SetActive(true);
+            Backbutton.SetActive(true);
+            sideWalls[0].enabled = false;
+            sideWalls[1].enabled = false;
+            // foreach(SideWall a in sideWalls){
+
+            //     a = GetComponent<SideWall>();
+            //     a.enabled = false;
+            // }
+            //this.gameObject.SendMessage("ChangeScene", "MainMenu");
         }
     }
 
