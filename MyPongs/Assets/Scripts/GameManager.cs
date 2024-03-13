@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject P1WiN;
     public GameObject P2WiN;
     public GameObject Backbutton;
-    public SideWall[] sideWalls;
+
+    public GameObject trigL;
+    public GameObject trigR;
+    //public SideWall[] sideWalls;
 
     //Buat UI Text
     public TMP_Text txtPlayerScoreL;
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         //Mengisikan nilai integer PlayerScore ke UI
         //sideWalls = FindObjectsOfType<SideWall>();
+
         txtPlayerScoreL.text = PlayerScoreL.ToString();
         txtPlayerScoreR.text = PlayerScoreR.ToString();
     }
@@ -61,8 +65,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("playerL win");
             P1WiN.SetActive(true);
             Backbutton.SetActive(true);
-            sideWalls[0].enabled = false;
-            sideWalls[1].enabled = false;
+
+            BoxCollider2D kiri = trigL.GetComponent<BoxCollider2D>();
+            kiri.isTrigger = false;
+
+            BoxCollider2D kanan = trigR.GetComponent<BoxCollider2D>();
+            kanan.isTrigger = false;
+
+            // trigL.SetActive(true);
+            // sideWalls[0].enabled = false;
+            // sideWalls[1].enabled = false;
             // foreach(SideWall a in sideWalls){
 
             //     a = GetComponent<SideWall>();
@@ -75,8 +87,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("playerR win");
             P2WiN.SetActive(true);
             Backbutton.SetActive(true);
-            sideWalls[0].enabled = false;
-            sideWalls[1].enabled = false;
+            
+            BoxCollider2D kiri = trigL.GetComponent<BoxCollider2D>();
+            kiri.isTrigger = false;
+
+            BoxCollider2D kanan = trigR.GetComponent<BoxCollider2D>();
+            kanan.isTrigger = false;
+            // trigR.SetActive(true);
+            // sideWalls[0].enabled = false;
+            // sideWalls[1].enabled = false;
             // foreach(SideWall a in sideWalls){
 
             //     a = GetComponent<SideWall>();
